@@ -1,0 +1,59 @@
+# Autofilled by tools/new_project_layout/probe_disc.py from your legal dump.
+# Review before shipping. Runtime quirks / overlay seeds still need hand work.
+
+[game]
+name = "Jet Moto 2"
+id = "SCUS-94167"
+players = 1
+exe = "disc/SCUS_941.67"
+disc = "disc/Jet Moto 2 (USA).cue"
+discs = ["disc/Jet Moto 2 (USA).cue"]
+disc_serials = ["SCUS-94167"]
+load_address = "0x801048B8"
+entry_pc = "0x801184A4"
+text_size = "0x000DC800"
+stack_base = "0x801FFFF0"
+
+# Digests are for data Track 01 (first BINARY FILE / TRACK 01).
+[prepare_disc]
+out_dir = "disc"
+bin_name = "Jet Moto 2 (USA) (Track 1).bin"
+cue_name = "Jet Moto 2 (USA).cue"
+boot_exe = "SCUS_941.67"
+known_sizes = [139565328]
+known_md5 = [
+  "ef5291897854b388cd1fb6c35f5e79cc",
+]
+known_sha1 = [
+  "4b345c4c821a0e2b7a072869628ede63c6a0a410",
+]
+known_crc32 = [
+  "18f70153",
+]
+
+[recompiler]
+bios_config = "psxrecomp/bios/SCPH1001.toml"
+seeds = "seeds/ghidra_funcs.txt"
+out_dir = "generated"
+strict = true
+
+[runtime]
+openbios = false
+bios_hle = false
+window_title = "Jet Moto 2 Recompiled"
+memcard_dir = "saves"
+overlay_cache = true
+
+[video]
+renderer = "opengl"
+aspect_ratio = "4:3"
+
+[controller]
+default_mode = "digital"
+
+# Online mount gate: digests + track count + optional TOC fingerprint
+# (see docs/NETPLAY.md).
+[netplay]
+require_cue = true
+required_tracks = 17
+required_disc_fp = "1116d8d3e4e569f7ef32a3a6dcc8b78142508cde1b7af1f510db835cd03278be"
